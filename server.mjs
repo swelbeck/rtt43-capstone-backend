@@ -1,8 +1,9 @@
 import express from "express";
 import connectDB from "./config/db.mjs";
 import dotenv from "dotenv";
-// import userRoutes from "./routes/api/users.mjs";
-// import authRoutes from "./routes/api/auth.mjs";
+import userRoutes from "./routes/api/userRoutes.mjs";
+import authRoutes from "./routes/api/authRoutes.mjs";
+import bookRoutes from "./routes/api/bookRoutes.mjs"
 import cors from "cors";
 
 dotenv.config();
@@ -21,8 +22,9 @@ app.use(cors());
 app.get("/", (req, res) => res.send("API Running"));
 
 //Define Routes
-// app.use("/api/users", userRoutes);
-// app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/books", bookRoutes);
 
 // Environmental Variables
 const PORT = process.env.PORT || 3000;
